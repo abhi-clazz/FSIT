@@ -1,5 +1,6 @@
 package com.babytoy.service.Implementation;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.babytoy.DAO.CustomerDAO;
@@ -21,23 +22,25 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	public boolean search(int customerId) {
-
+		customerDAO.search(customerId);
 		return false;
 	}
 
-	public boolean search(String customerId) {
+	public boolean search(String customerName) {
+		customerDAO.search(customerName);
 		
 		return false;
 	}
 
-	public void display() {
-		
+	
 
+	public void delete(int customerId) {
+		customerDAO.delete(customerId);
 	}
 
-	public boolean delete(int customerId) {
-		
-		return false;
+	public List<Customer>display()  {
+		customerDAO.display();
+		return customerDAO.display();
 	}
 
 	
