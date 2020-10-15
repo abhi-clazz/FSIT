@@ -10,7 +10,12 @@ public interface CustomerDAO {
 
 	public void insert(Customer customer) throws InvalidNameException;
 	public List<Customer> display() ;
+	public boolean search(int customerId);
+	public boolean search(String customerName);
 	public void delete(int customerId);
+	public boolean update(int customerId,String c);
+	public boolean login(int id, String p);
+
 
 
 	

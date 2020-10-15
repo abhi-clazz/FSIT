@@ -1,12 +1,12 @@
-package com.babytoy.util;
+package com.babytoy.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DatabaseConnection {
+public class DatabaseConnectionDAO {
 
-	private static final String databaseDriverClass="com.mysql.cj.jdbc.Driver";
+	private static final String databaseDriverClass="com.mysql.jdbc.Driver";
 	private static final String UserName="root";
 	private static final String password="abhi";
 	private static final String databaseURL ="jdbc:mysql://localhost:3306/abhiclazz";

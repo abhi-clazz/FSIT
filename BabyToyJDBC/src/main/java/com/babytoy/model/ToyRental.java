@@ -9,16 +9,20 @@ public class ToyRental {
 	private int toyId;
 	private Date rentalStartDate;
 	private Date rentalEndDate;
-	private Double totalAmount;
-	private Double fine;
+	private double totalAmount;
+	private double fine;
 	private String status;
+	private double rentalAmountPerDay;
 	
-	public ToyRental() {
+
+
+public ToyRental() {
 		
 	}
 	
+	
 	public ToyRental(int rentalId, int customerId, int toyId, Date rentalStartDate, Date rentalEndDate,
-			Double totalAmount, Double fine, String status) {
+			double totalAmount, double fine, String status, double rentalAmountPerDay) {
 		super();
 		this.rentalId = rentalId;
 		this.customerId = customerId;
@@ -28,7 +32,11 @@ public class ToyRental {
 		this.totalAmount = totalAmount;
 		this.fine = fine;
 		this.status = status;
+		this.rentalAmountPerDay = rentalAmountPerDay;
 	}
+
+	
+	
 	public int getRentalId() {
 		return rentalId;
 	}
@@ -59,16 +67,16 @@ public class ToyRental {
 	public void setRentalEndDate(Date rentalEndDate) {
 		this.rentalEndDate = rentalEndDate;
 	}
-	public Double getTotalAmount() {
+	public double getTotalAmount() {
 		return totalAmount;
 	}
-	public void setTotalAmount(Double totalAmount) {
+	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
-	public Double getFine() {
+	public double getFine() {
 		return fine;
 	}
-	public void setFine(Double fine) {
+	public void setFine(double fine) {
 		this.fine = fine;
 	}
 	public String getStatus() {
@@ -77,11 +85,23 @@ public class ToyRental {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public double getRentalAmountPerDay() {
+		return rentalAmountPerDay;
+	}
+
+
+	public void setRentalAmountPerDay(double rentalAmountPerDay) {
+		this.rentalAmountPerDay = rentalAmountPerDay;
+	}
+
+
 	@Override
 	public String toString() {
-		return "ToyRental [rentalId=" + rentalId + ", customerId=" + customerId + ", toyId=" + toyId
-				+ ", rentalStartDate=" + rentalStartDate + ", rentalEndDate=" + rentalEndDate + ", totalAmount="
-				+ totalAmount + ", fine=" + fine + ", status=" + status + "]";
+		return "ToyRental [rentalId=" + rentalId + ", customerId=" + customerId + ", toyId=" + toyId + ", totalAmount="
+				+ totalAmount + ", status=" + status + "]";
 	}
+
+
+
 
 }

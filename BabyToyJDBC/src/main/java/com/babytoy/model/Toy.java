@@ -3,7 +3,7 @@ package com.babytoy.model;
 import com.babytoy.exception.InvalidAgeException;
 
 public class Toy {
-	private String toyId;
+	private int toyId;
 	private String toyName;
 	private String toyType;
 	private int minAge;
@@ -15,7 +15,7 @@ public class Toy {
 		
 	}
 	
-	public Toy(String toyId, String toyName, String toyType, int minAge, int maxAge, float price, int quantity,
+	public Toy(int toyId, String toyName, String toyType, int minAge, int maxAge, float price, int quantity,
 			float rentalAmount) throws InvalidAgeException{
 		super();
 		this.toyId = toyId;
@@ -30,10 +30,10 @@ public class Toy {
 
 	}
 
-	public String getToyId() {
+	public int getToyId() {
 		return toyId;
 	}
-	public void setToyId(String toyId) {
+	public void setToyId(int toyId) {
 		this.toyId = toyId;
 	}
 	public String getToyName() {
@@ -83,7 +83,7 @@ public class Toy {
 
 	@Override
 	public String toString() {
-		return "Toy [toyId=" + toyId + ", toyName=" + toyName + ", toyType=" + toyType + ", minAge=" + minAge
+		return "[toyId=" + toyId + ", toyName=" + toyName + ", toyType=" + toyType + ", minAge=" + minAge
 				+ ", maxAge=" + maxAge + ", price=" + price + ", quantity=" + quantity + ", rentalAmount="
 				+ rentalAmount + "]";
 	}
