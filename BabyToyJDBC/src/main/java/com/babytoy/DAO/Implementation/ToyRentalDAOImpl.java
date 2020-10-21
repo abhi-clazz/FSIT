@@ -38,7 +38,7 @@ public class ToyRentalDAOImpl implements ToyRentalDAO {
 			ResultSet rs=stat.getGeneratedKeys();
 			if(rs.next())
 			{
-				System.out.println(rs.getInt(1));
+				System.out.println("Booked Toy with ToyId: "+rental.getToyId()+"and rental id for booking is :"+rs.getInt(1));
 			}
 				
 			}
@@ -57,7 +57,8 @@ public class ToyRentalDAOImpl implements ToyRentalDAO {
 
 	public double getRentalAmount(int customerId,int toyId,int rentalId) throws SQLException {
 		String query="Select rental_amount_per_day from Toy_Rental where Customer_Id=? and toy_id=? and rental_id=?";
-		double r = 0;
+		float r = 0;
+		try {
 		PreparedStatement stat=DatabaseConnectionDAO.geConnection().prepareStatement(query);
 		stat.setInt(1, customerId);
 		stat.setInt(2, toyId);
@@ -66,12 +67,16 @@ public class ToyRentalDAOImpl implements ToyRentalDAO {
 		if(rs.next())
 		{
 			r=rs.getFloat("rental_amount_per_day")*30;
+			System.out.println("Rental Amount is "+r);
 		}
 		else
 		{
 			System.out.println("No details found for entered fields");
 		}
 
+		}
+		catch (Exception e) {
+		}
 		
 		return r;
 	}
@@ -81,7 +86,7 @@ public class ToyRentalDAOImpl implements ToyRentalDAO {
 		
 		try {
 		// TODO Auto-generated method stub
-		String q="update toy_rental set status='returned' where rental_id=? and toy_id=?  where status='booked' and customerId=?";
+		String q="update toy_rental set status='returned' where rental_id=? and toy_id=? and customer_Id=?  and status='booked'";
 		PreparedStatement stat=DatabaseConnectionDAO.geConnection().prepareStatement(q);
 		stat.setInt(1, rentalId);
 		stat.setInt(2, toyId);
@@ -90,11 +95,12 @@ public class ToyRentalDAOImpl implements ToyRentalDAO {
 		int n=stat.executeUpdate();
 		if(n>0)
 		{
-			System.out.println("toys returned");
 			String query="update toy set quantity=quantity-1 where Toy_Id=?";
 			PreparedStatement stat1=DatabaseConnectionDAO.geConnection().prepareStatement(query);
 			stat1.setInt(1, toyId);
 			stat1.execute();
+			System.out.println("toys returned");
+
 		
 		}
 		else
@@ -103,7 +109,8 @@ public class ToyRentalDAOImpl implements ToyRentalDAO {
 		}
 		}
 		catch (Exception e) {
-			System.out.println("");		}
+			e.printStackTrace();
+			System.out.println("ok");		}
 
 	}
 
@@ -112,7 +119,7 @@ public class ToyRentalDAOImpl implements ToyRentalDAO {
 		List<ToyRental>list=new ArrayList<ToyRental>();
 		ToyRental tr=new ToyRental();
 		// TODO Auto-generated method stub
-		String query="Select customer_id,Toy_id,rentail_id,start_date,end_date,total_amount,fine,status from Toy_Rental where Customer_Id=?";
+		String query="Select customer_id,Toy_id,rental_id,start_date,end_date,total_amount,status from Toy_Rental where Customer_Id=?";
 		
 		try {
 			PreparedStatement stat=DatabaseConnectionDAO.geConnection().prepareStatement(query);
@@ -131,8 +138,7 @@ public class ToyRentalDAOImpl implements ToyRentalDAO {
 			}
 		}
 		catch (Exception e) {
-			// TODO: handle exception
-		}
+e.printStackTrace();		}
 		return list ;
 	}
 

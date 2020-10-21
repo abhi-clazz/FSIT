@@ -80,7 +80,7 @@ public class ToyDAOImpl implements ToyDAO {
 	public List<Toy> searchToy(int toyid) {
 		// TODO Auto-generated method stub
 		List<Toy>toylist=new ArrayList<Toy>();
-		String query="Select Toy_id,Toy_name,min_age,max_age,price,rental_amount,quantity from Toy where toy_id=?";
+		String query="Select Toy_id,Toy_name,toy_type,min_age,max_age,price,rental_amount,quantity from Toy where toy_id=?";
 		try {
 			PreparedStatement stat=DatabaseConnectionDAO.geConnection().prepareStatement(query);
 			stat.setInt(1, toyid);
@@ -100,8 +100,7 @@ public class ToyDAOImpl implements ToyDAO {
 			}
 		}
 		catch (Exception e) {
-			// TODO: handle exception
-		}
+	}
 		return toylist;
 	}
 	

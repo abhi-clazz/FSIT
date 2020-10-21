@@ -29,7 +29,7 @@ public class App {
 		ToyRental r=new ToyRental();
 		try 
 		{
-		int repeater=0;
+		int repeater=0;  int count=0;
 		int repeater1=0;
 		int repeater2=0;
 		int repeater4=0;
@@ -41,6 +41,8 @@ public class App {
 
 			if(i==1)
 			{
+				while(count==0)
+				{
 				System.out.println();
 				System.out.println("Enter UserId");
 				String id1=scan.next();
@@ -208,7 +210,13 @@ public class App {
 				else
 				{
 					System.out.println("invalid credntials");
+					
 				}
+				System.out.println("press 0 to Login Again");
+				count=scan.nextInt();
+				}
+				
+			
 
 			}
 
@@ -234,21 +242,24 @@ public class App {
 						System.out.println("****************************************************************************************************************************");
 						System.out.println();
 
-						
-
+						System.out.println("Input Toy_ID");
+						int id3 = scan.nextInt();
+						if(serviceImpl.searchToy(id3).size()>0)
+						{
+							
 						System.out.println("Input CustomerID");
 						int id2 = scan.nextInt();
 
-						System.out.println("Input Toy_ID");
-						int id3 = scan.nextInt();
+						
 
-						System.out.println("Enter Start DATE in dd-mm-yyyy format");
+						System.out.println("Enter Start DATE in  MM/dd/yyyy  format Only");
 						String start = scan.next();
 
-						System.out.println("Enter End Date in MM/dd/yyyy format");
+						System.out.println("Enter End Date in MM/dd/yyyy format only");
 						String end = scan.next();
-
-					
+						
+						
+						
 						double amt=serviceImpl.searchToy(id3).get(0).getRentalAmount();
 
 
@@ -278,6 +289,11 @@ public class App {
 							System.out.println("Enter  Date in MM/dd/yyyy format only");
 
 
+						}
+						}
+						else
+						{
+							System.out.println("no toy available with "+id3);
 						}
 					}
 					else if (m==2)
@@ -370,7 +386,7 @@ public class App {
 			else {
 				System.out.println("wrong choice");
 			}
-			System.out.println("press 0 to go to main console");
+			System.out.println("press 0 to go to MAIN console");
 			repeater=scan.nextInt();
 		}
 		}
